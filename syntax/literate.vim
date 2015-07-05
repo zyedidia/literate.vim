@@ -27,6 +27,8 @@ function! TextEnableCodeSnip(filetype,start,end,textSnipHl) abort
 				\ contains=@'.group
 endfunction
 
-call TextEnableCodeSnip(tolower(b:codetype), "^---.", "^---$", "SpecialComment")
+if b:codetype != "not found"
+	call TextEnableCodeSnip(tolower(b:codetype), "^---.", "^---$", "SpecialComment")
+endif
 
 let b:current_syntax = "literate"
