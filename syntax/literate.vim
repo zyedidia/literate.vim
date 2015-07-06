@@ -7,9 +7,10 @@ set syntax=markdown
 syntax match literateCommand "@s"
 syntax match literateCommand "@title"
 syntax match literateCommand "@codetype"
-syntax match literateLink "@{.*}"
-highlight link literateCommand Special
-highlight link literateLink Underlined
+syntax match literateCommand "@{.*}"
+syntax match literateLatex "\$"
+highlight link literateCommand Underlined
+highlight link literateLatex Special
 
 function! TextEnableCodeSnip(filetype,start,end,textSnipHl) abort
 	let ft=toupper(a:filetype)
