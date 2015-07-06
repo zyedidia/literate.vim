@@ -2,6 +2,8 @@ if exists("b:current_syntax")
 	finish
 endif
 
+set syntax=markdown
+
 function! TextEnableCodeSnip(filetype,start,end,textSnipHl) abort
 	let ft=toupper(a:filetype)
 	let group='textGroup'.ft

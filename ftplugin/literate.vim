@@ -3,6 +3,8 @@ if exists("b:did_ftplugin")
 endif
 let b:did_ftplugin = 1
 
+setlocal expandtab
+
 let s:codetypeline_num = search("@codetype", "n")
 let s:codetypeline = getline(s:codetypeline_num)
 
