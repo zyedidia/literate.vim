@@ -4,6 +4,13 @@ endif
 
 set syntax=markdown
 
+syntax match literateCommand "@s"
+syntax match literateCommand "@title"
+syntax match literateCommand "@codetype"
+syntax match literateLink "@{.*}"
+highlight link literateCommand Special
+highlight link literateLink Underlined
+
 function! TextEnableCodeSnip(filetype,start,end,textSnipHl) abort
 	let ft=toupper(a:filetype)
 	let group='textGroup'.ft
