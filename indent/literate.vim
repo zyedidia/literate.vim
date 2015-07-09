@@ -1,8 +1,9 @@
+finish
 if exists("b:did_indent")
 	finish
 endif
 
-let s:codetypeline_num = search("@codetype", "n")
+let s:codetypeline_num = search("@code_type", "n")
 let s:codetypeline = getline(s:codetypeline_num)
 
 if s:codetypeline_num > 0

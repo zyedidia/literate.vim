@@ -2,15 +2,16 @@ if exists("b:current_syntax")
 	finish
 endif
 
-set syntax=markdown
+syntax case match
 
 syntax match literateCommand "@s"
 syntax match literateCommand "@title"
-syntax match literateCommand "@codetype"
+syntax match literateCommand "@code_type"
 syntax match literateCommand "@{.*}"
-syntax match literateLatex "\$"
-highlight link literateCommand Underlined
-highlight link literateLatex Special
+syntax match literateCommand "@comment_type"
+syntax match codeblock "^---.*$"
+hi link literateCommand Underlined
+hi link codeblock Identifier
 
 function! TextEnableCodeSnip(filetype,start,end,textSnipHl) abort
 	let ft=toupper(a:filetype)
@@ -37,8 +38,8 @@ function! TextEnableCodeSnip(filetype,start,end,textSnipHl) abort
 				\ contains=@'.group
 endfunction
 
-if b:codetype != "not found"
-	call TextEnableCodeSnip(tolower(b:codetype), "^---.", "^---$", "SpecialComment")
-endif
+" if b:codetype != "not found"
+" 	call TextEnableCodeSnip(tolower(b:codetype), "^---.", "^---$", "SpecialComment")
+" endif
 
 let b:current_syntax = "literate"
