@@ -5,7 +5,7 @@ let b:did_ftplugin = 1
 
 setlocal expandtab
 
-let s:codetypeline_num = search("@code_type", "n")
+let s:codetypeline_num = search("^@code_type", "n")
 let s:codetypeline = getline(s:codetypeline_num)
 
 let b:codetype = "not found"
