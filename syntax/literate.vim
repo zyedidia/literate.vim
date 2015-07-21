@@ -2,6 +2,8 @@ if exists("b:current_syntax")
 	finish
 endif
 
+set syntax=markdown
+
 syntax case match
 
 syntax match literateCommand "@s"
@@ -28,7 +30,9 @@ function! TextEnableCodeSnip(filetype,start,end,textSnipHl) abort
 	if exists('s:current_syntax')
 		let b:current_syntax=s:current_syntax
 	else
-		unlet b:current_syntax
+        if exists('b:current_syntax')
+            unlet b:current_syntax
+        endif
 	endif
 	execute 'syntax region textSnip'.ft.'
 				\ matchgroup='.a:textSnipHl.'

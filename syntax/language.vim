@@ -1,4 +1,4 @@
-exec 'runtime syntax/' . b:codetype . '.vim'
+exec 'runtime syntax/' . tolower(b:codetype) . '.vim'
 
 syntax region blockReference start=/@{/ end=/}/
 hi link blockReference Underlined
