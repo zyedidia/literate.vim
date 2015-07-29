@@ -10,6 +10,7 @@ syntax match literateCommand "@s"
 syntax match literateCommand "@title"
 syntax match literateCommand "@code_type"
 syntax match literateCommand "@comment_type"
+syntax match literateCommand "@{.\{-}}"
 hi link literateCommand Underlined
 
 function! TextEnableCodeSnip(filetype,start,end,textSnipHl) abort
