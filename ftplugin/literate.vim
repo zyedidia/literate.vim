@@ -15,17 +15,17 @@ if s:codetypeline_num != 0
 	let b:codetype_ext = split(s:codetypeline)[2]
 endif
 
-function FindCodeblock()
+function! FindCodeblock()
     let line = getline('.')
 
     if !empty(matchstr(line, '^---.\+$'))
         let match = matchlist(line, '\v^---\s*(.{-})(\s*\+\=)?$')[1]
 
-        exec "/" . match
+        exec "/\\v((^---\\s*)|(\\@\\{))" . match . "(\\})?"
     elseif !empty(matchstr(line, '@{.*}'))
         let match = matchlist(line, '\v\@\{(.*)\}')[1]
 
-        exec "/" . match
+        exec "/\\v((^---\\s*)|(\\@\\{))" . match . "(\\})?"
     end
 endfunc
 
