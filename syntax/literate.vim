@@ -9,7 +9,7 @@ let b:codetype = "not found"
 
 if s:codetypeline_num != 0
     let b:codetype = split(s:codetypeline)[1]
-    let b:codetype_ext = split(s:codetypeline)[2]
+    let b:codetype_ext = split(s:codetypeline)[2][1:]
 endif
 
 set syntax=markdown
