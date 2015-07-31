@@ -2,6 +2,16 @@ if exists("b:current_syntax")
 	finish
 endif
 
+let s:codetypeline_num = search("^@code_type", "n")
+let s:codetypeline = getline(s:codetypeline_num)
+
+let b:codetype = "not found"
+
+if s:codetypeline_num != 0
+    let b:codetype = split(s:codetypeline)[1]
+    let b:codetype_ext = split(s:codetypeline)[2]
+endif
+
 set syntax=markdown
 
 syntax case match
