@@ -29,7 +29,7 @@ function! FindCodeblock()
     end
 endfunc
 
-function LitCode()
+function! LitCode()
     exec "w"
     exec "silent !lit -code %"
 
