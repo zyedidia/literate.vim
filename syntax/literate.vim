@@ -12,8 +12,6 @@ if s:codetypeline_num != 0
     let b:codetype_ext = split(s:codetypeline)[2][1:]
 endif
 
-set syntax=markdown
-
 syntax case match
 
 syntax match literateCommand "@s"
@@ -21,7 +19,14 @@ syntax match literateCommand "@title"
 syntax match literateCommand "@code_type"
 syntax match literateCommand "@comment_type"
 syntax match literateCommand "@{.\{-}}"
+
+syntax match markdownCommand "`.\{-}`"
+syntax match markdownCommand "$.\{-}$"
+syntax match markdownCommand "\*.\{-}\*"
+syntax match markdownCommand "\*\*.\{-}\*\*"
+
 hi link literateCommand Underlined
+hi link markdownCommand String
 
 function! TextEnableCodeSnip(filetype,start,end,textSnipHl) abort
 	let ft=toupper(a:filetype)
