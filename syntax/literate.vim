@@ -14,16 +14,24 @@ endif
 
 syntax case match
 
-syntax match literateCommand "@s"
-syntax match literateCommand "@title"
-syntax match literateCommand "@code_type"
-syntax match literateCommand "@comment_type"
+syntax match literateCommand "^@s"
+syntax match literateCommand "^@title"
+syntax match literateCommand "^@code_type"
+syntax match literateCommand "^@comment_type"
 syntax match literateCommand "@{.\{-}}"
+syntax match literateCommand "^@include"
+syntax match literateCommand "^@change"
+syntax match literateCommand "^@change_end"
 
 syntax match markdownCommand "`.\{-}`"
 syntax match markdownCommand "$.\{-}$"
 syntax match markdownCommand "\*.\{-}\*"
 syntax match markdownCommand "\*\*.\{-}\*\*"
+
+syntax region changeFrom start="^@replace"ms=e+1 end="^@with"me=s-1
+syntax region changeTo start="^@with"ms=e+1 end="^@end"me=s-1
+hi def link changeFrom String
+hi def link changeTo Statement
 
 hi link literateCommand Underlined
 hi link markdownCommand String
