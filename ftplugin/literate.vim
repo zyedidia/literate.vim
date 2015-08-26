@@ -15,6 +15,16 @@ if s:codetypeline_num != 0
     let b:codetype_ext = split(s:codetypeline)[2][1:]
 endif
 
+if exists(":Neomake") == 0
+    let g:neomake_literate_lit_maker = {
+            \ 'args': ['--no-output'],
+            \ 'errorformat':
+                \ '%f:%trror:%l: %m',
+            \ }
+
+    let g:neomake_literate_enabled_makers = ['lit']
+endif
+
 function! FindCodeblock()
     let line = getline('.')
 
