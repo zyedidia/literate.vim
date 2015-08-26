@@ -15,15 +15,19 @@ if s:codetypeline_num != 0
     let b:codetype_ext = split(s:codetypeline)[2][1:]
 endif
 
-if exists(":Neomake") == 0
-    let g:neomake_literate_lit_maker = {
-            \ 'args': ['--no-output'],
-            \ 'errorformat':
-                \ '%f:%trror:%l: %m',
-            \ }
+function! EnableLinter()
+    if exists(":Neomake") == 2
+        let g:neomake_literate_lit_maker = {
+                \ 'args': ['--no-output'],
+                \ 'errorformat':
+                    \ '%f:%l:%trror: %m,' .
+                    \ '%f:%l:%tarning: %m,' .
+                    \ '%f:%l: %m',
+                \ }
 
-    let g:neomake_literate_enabled_makers = ['lit']
-endif
+        let g:neomake_literate_enabled_makers = ['lit']
+    endif
+endfunc
 
 function! FindCodeblock()
     let line = getline('.')
@@ -60,3 +64,5 @@ endfunc
 nnoremap <C-]> :call FindCodeblock()<CR>
 nnoremap <Leader>l :call LitCode()<CR>
 nnoremap <Leader>o :call LitHtml()<CR>
+
+au! VimEnter * call EnableLinter()
