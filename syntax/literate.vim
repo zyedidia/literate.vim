@@ -27,7 +27,7 @@ syntax match literateCommand "@overwrite_css"
 syntax match literateCommand "@colorscheme"
 
 syntax match markdownCommand "`.\{-}`"
-syntax match markdownCommand "$.\{-}$"
+syntax match markdownCommand "\$.\{-}\$"
 syntax match markdownCommand "\*.\{-}\*"
 syntax match markdownCommand "\*\*.\{-}\*\*"
 
