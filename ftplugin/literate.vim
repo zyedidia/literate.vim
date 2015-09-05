@@ -63,8 +63,16 @@ function! LitHtml()
     exec "redraw!"
 endfunc
 
+function! LitPDF()
+    exec "w"
+    exec "silent !lit -pdf %"
+    exec "silent !open %:r.pdf"
+    exec "redraw!"
+endfunc
+
 nnoremap <C-]> :call FindCodeblock()<CR>
 nnoremap <Leader>l :call LitCode()<CR>
 nnoremap <Leader>o :call LitHtml()<CR>
+nnoremap <Leader>p :call LitPDF()<CR>
 
 au! VimEnter * call EnableLinter()
