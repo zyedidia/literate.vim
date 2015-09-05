@@ -51,6 +51,8 @@ function! LitCode()
 
     if index(splits, expand("%:r") . "." . b:codetype_ext) == -1
         exec "vsp %:r.".b:codetype_ext
+    else
+        exec "wincmd l"
     endif
 endfunc
 
