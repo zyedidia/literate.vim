@@ -25,6 +25,8 @@ syntax match literateCommand "^@change_end"
 syntax match literateCommand "@add_css"
 syntax match literateCommand "@overwrite_css"
 syntax match literateCommand "@colorscheme"
+syntax match literateCommand "@compiler"
+syntax match literateCommand "@error_format"
 
 syntax match markdownCommand "`.\{-}`"
 syntax match markdownCommand "\$.\{-}\$"
