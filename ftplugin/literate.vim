@@ -44,7 +44,7 @@ function! FindCodeblock()
 endfunc
 
 function! LitCode()
-    " exec "w"
+    exec "noautocmd w"
     exec "silent !lit -code %"
 
     let splits = map(range(1, winnr('$')), 'fnamemodify(bufname(winbufnr(v:val)), ":t")')
