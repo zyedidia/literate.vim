@@ -44,7 +44,7 @@ function! FindCodeblock()
 endfunc
 
 function! LitCode()
-    exec "w"
+    " exec "w"
     exec "silent !lit -code %"
 
     let splits = map(range(1, winnr('$')), 'fnamemodify(bufname(winbufnr(v:val)), ":t")')
@@ -63,16 +63,8 @@ function! LitHtml()
     exec "redraw!"
 endfunc
 
-function! LitPDF()
-    exec "w"
-    exec "silent !lit -pdf %"
-    exec "silent !open %:r.pdf"
-    exec "redraw!"
-endfunc
-
 nnoremap <C-]> :call FindCodeblock()<CR>
 nnoremap <Leader>l :call LitCode()<CR>
 nnoremap <Leader>o :call LitHtml()<CR>
-nnoremap <Leader>p :call LitPDF()<CR>
 
 call EnableLinter()
