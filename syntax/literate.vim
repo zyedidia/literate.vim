@@ -14,29 +14,32 @@ endif
 
 syntax case match
 
-syntax match literateCommand "^@s"
-syntax match literateCommand "^@title"
-syntax match literateCommand "^@code_type"
-syntax match literateCommand "^@comment_type"
-syntax match literateCommand "@{.\{-}}"
-syntax match literateCommand "^@include"
-syntax match literateCommand "^@change"
-syntax match literateCommand "^@change_end"
-syntax match literateCommand "@add_css"
-syntax match literateCommand "@overwrite_css"
-syntax match literateCommand "@colorscheme"
+syn match literateCommand "^@s"
+syn match literateCommand "^@title"
+syn match literateCommand "^@code_type"
+syn match literateCommand "^@comment_type"
+syn match literateCommand "@{.\{-}}"
+syn match literateCommand "^@include"
+syn match literateCommand "^@change"
+syn match literateCommand "^@change_end"
+syn match literateCommand "@add_css"
+syn match literateCommand "@overwrite_css"
+syn match literateCommand "@colorscheme"
+syn match literateCommand "@compiler"
+syn match literateCommand "@error_format"
 
-syntax match markdownCommand "`.\{-}`"
-syntax match markdownCommand "\$.\{-}\$"
-syntax match markdownCommand "\*.\{-}\*"
-syntax match markdownCommand "\*\*.\{-}\*\*"
+syn match markdownCommand "`.\{-}`"
+syn match markdownCommand "\$.\{-}\$"
+syn match markdownCommand "\$\$.\{-}\$\$"
+syn match markdownCommand "\*.\{-}\*"
+syn match markdownCommand "\*\*.\{-}\*\*"
 
-syntax region changeFrom start="^@replace"ms=e+1 end="^@with"me=s-1
-syntax region changeTo start="^@with"ms=e+1 end="^@end"me=s-1
+syn region changeFrom start="^@replace"ms=e+1 end="^@with"me=s-1
+syn region changeTo start="^@with"ms=e+1 end="^@end"me=s-1
 hi def link changeFrom String
 hi def link changeTo Statement
 
-hi link literateCommand Underlined
+hi link literateCommand PreProc
 hi link markdownCommand String
 
 function! TextEnableCodeSnip(filetype,start,end,textSnipHl) abort
