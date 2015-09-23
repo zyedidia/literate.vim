@@ -75,4 +75,4 @@ nnoremap <Leader>l :call LitCode()<CR>
 nnoremap <Leader>o :call LitHtml()<CR>
 nnoremap <Leader>p :call LitPDF()<CR>
 
-au! VimEnter * call EnableLinter()
+call EnableLinter()
