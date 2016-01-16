@@ -18,7 +18,7 @@ endif
 function! EnableLinter()
     if exists(":Neomake") == 2
         let g:neomake_literate_lit_maker = {
-                \ 'args': ['-code', '--no-output'],
+                \ 'args': ['--compiler', '-t'],
                 \ 'errorformat':
                     \ '%f:%l:%trror: %m,' .
                     \ '%f:%l:%tarning: %m,' .
