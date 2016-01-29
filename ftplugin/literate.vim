@@ -64,7 +64,7 @@ function! LitHtml()
 endfunc
 
 nnoremap <C-]> :call FindCodeblock()<CR>
-nnoremap <Leader>l :call LitCode()<CR>
-nnoremap <Leader>o :call LitHtml()<CR>
+nnoremap <Leader>c :call LitCode()<CR>
+nnoremap <Leader>h :call LitHtml()<CR>
 
 call EnableLinter()
