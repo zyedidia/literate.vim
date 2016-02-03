@@ -73,7 +73,7 @@ function! TextEnableCodeSnip(filetype,start,end,textSnipHl) abort
 endfunction
 
 if b:codetype != "not found"
-	call TextEnableCodeSnip(tolower(b:codetype), "^---.*$", "^---$", "Identifier")
+	call TextEnableCodeSnip(tolower(b:codetype), "^---.*$", "^---[ ]*$", "Identifier")
 endif
 
 let b:current_syntax = "literate"
