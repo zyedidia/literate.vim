@@ -44,8 +44,12 @@ function! FindCodeblock()
 endfunc
 
 function! LitCode()
+    if !exists('b:codetype_ext')
+        echohl ErrorMsg | echo "@codetype not defined" | echohl None
+        return
+    endif
     exec "noautocmd w"
-    exec "silent !lit -code %"
+    exec "silent !lit -t %"
 
     let splits = map(range(1, winnr('$')), 'fnamemodify(bufname(winbufnr(v:val)), ":t")')
 
@@ -58,13 +62,23 @@ endfunc
 
 function! LitHtml()
     exec "w"
-    exec "silent !lit -html %"
+    exec "silent !lit -w %"
     exec "silent !open %:r.html"
     exec "redraw!"
 endfunc
 
-nnoremap <C-]> :call FindCodeblock()<CR>
-nnoremap <Leader>c :call LitCode()<CR>
-nnoremap <Leader>h :call LitHtml()<CR>
+if !exists('g:literate_find_codeblock')
+    let g:literate_find_codeblock = '<C-]>'
+endif
+if !exists('g:literate_open_code')
+    let g:literate_open_code = '<leader>c'
+endif
+if !exists('g:literate_open_html')
+    let g:literate_open_html = '<leader>h'
+endif
+
+execute "autocmd FileType literate" "nnoremap <buffer>" g:literate_find_codeblock ":call FindCodeblock()<CR>"
+execute "autocmd FileType literate" "nnoremap <buffer>" g:literate_open_code ":call LitCode()<CR>"
+execute "autocmd FileType literate" "nnoremap <buffer>" g:literate_open_html ":call LitHtml()<CR>"
 
 call EnableLinter()
