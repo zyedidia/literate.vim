@@ -29,6 +29,19 @@ function! EnableLinter()
     endif
 endfunc
 
+function! EnableTagbar()
+    if exists(":TagbarToggle") == 2
+        let g:tagbar_type_literate = {
+                \ 'ctagstype' : 'literate',
+                    \ 'kinds' : [
+                        \ 's:section',
+                        \ 'c:code',
+                        \ 'i:includes'
+                    \ ]
+                \ }
+    endif
+endfunc
+
 function! FindCodeblock()
     let line = getline('.')
 
@@ -82,3 +95,4 @@ execute "autocmd FileType literate" "nnoremap <buffer>" g:literate_open_code ":c
 execute "autocmd FileType literate" "nnoremap <buffer>" g:literate_open_html ":call LitHtml()<CR>"
 
 call EnableLinter()
+call EnableTagbar()
