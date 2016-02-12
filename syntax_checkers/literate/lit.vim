@@ -7,7 +7,7 @@ let s:save_cpo = &cpo
 set cpo&vim
 
 function! SyntaxCheckers_literate_lit_GetLocList() dict
-    let makeprg = self.makeprgBuild({ 'args': '--compiler -t' })
+    let makeprg = self.makeprgBuild({ 'args': '--compiler' })
 
     let errorformat =
         \ '%f:%l:%trror: %m,' .
