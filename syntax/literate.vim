@@ -27,6 +27,7 @@ syn match literateCommand "@overwrite_css"
 syn match literateCommand "@colorscheme"
 syn match literateCommand "@compiler"
 syn match literateCommand "@error_format"
+syn match literateCommand "@book"
 
 syn match markdownCommand "`.\{-}`"
 syn match markdownCommand "\$.\{-}\$"
@@ -35,7 +36,7 @@ syn match markdownCommand "\*.\{-}\*"
 syn match markdownCommand "\*\*.\{-}\*\*"
 
 syn match Ignore "\\\$"
-syn match Comment "^\s*//.*$"
+syn match Comment "\s*//.*$"
 
 syn region changeFrom start="^@replace"ms=e+1 end="^@with"me=s-1
 syn region changeTo start="^@with"ms=e+1 end="^@end"me=s-1
