@@ -36,7 +36,7 @@ syn match markdownCommand "\*.\{-}\*"
 syn match markdownCommand "\*\*.\{-}\*\*"
 
 syn match Ignore "\\\$"
-syn match Comment "\s*//.*$"
+syn match Comment "^\s*//.*$"
 
 syn region changeFrom start="^@replace"ms=e+1 end="^@with"me=s-1
 syn region changeTo start="^@with"ms=e+1 end="^@end"me=s-1
