@@ -31,17 +31,26 @@ syn match literateCommand "@book"
 
 syn match markdownCommand "`.\{-}`"
 syn match markdownCommand "\$.\{-}\$"
+
 syn match markdownCommand "\$\$.\{-}\$\$"
 syn match markdownCommand "\*.\{-}\*"
 syn match markdownCommand "\*\*.\{-}\*\*"
 
-syn match Ignore "\\\$"
+syn match Ignore  "\\\$"
 syn match Comment "^\s*//.*$"
 
 syn region changeFrom start="^@replace"ms=e+1 end="^@with"me=s-1
-syn region changeTo start="^@with"ms=e+1 end="^@end"me=s-1
+syn region changeTo   start="^@with"ms=e+1 end="^@end"me=s-1
+
 hi def link changeFrom String
-hi def link changeTo Statement
+hi def link changeTo   Statement
+
+syn region mathInline start=/\$/ end=/\$/
+syn region mathBlock  start=/\$\$/ end=/\$\$/
+
+hi link mathInline String
+hi link mathBlock  String
+
 
 hi link literateCommand PreProc
 hi link markdownCommand String
