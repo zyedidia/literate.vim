@@ -12,7 +12,8 @@ function! SyntaxCheckers_literate_lit_GetLocList() dict
     let errorformat =
         \ '%f:%l:%trror: %m,' .
         \ '%f:%l:%tarning: %m,' .
-        \ '%f:%l: %m,'
+        \ '%f:%l: %m,' .
+        \ '%f:%l:%m'
 
     return SyntasticMake({
         \ 'makeprg': makeprg,
